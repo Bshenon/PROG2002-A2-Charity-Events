@@ -98,9 +98,7 @@ if (!eventId) {
             document
                 .getElementById('register-button')
                 .addEventListener('click', () => {
-                    alert(
-                        `Thank you for your interest in ${event.event_name}! Registration has been recorded.`
-                    );
+                    alert('This feature is currently under construction.');
                 });
         })
         .catch(error => {

@@ -4,6 +4,7 @@ const SEARCH_API = 'http://localhost:3000/api/events/search';
 const categorySelect = document.getElementById('category');
 const searchForm = document.getElementById('search-form');
 const searchResults = document.getElementById('search-results');
+const clearButton = document.getElementById('clear-button');
 
 // Load categories from the database
 fetch(CATEGORY_API)
@@ -21,6 +22,7 @@ fetch(CATEGORY_API)
     .catch(error => {
         console.error('Error loading categories:', error);
     });
+
 
 // Search for events
 searchForm.addEventListener('submit', event => {
@@ -59,7 +61,22 @@ searchForm.addEventListener('submit', event => {
         });
 });
 
+
+// Clear all search filters
+clearButton.addEventListener('click', () => {
+
+    document.getElementById('date').value = '';
+    document.getElementById('location').value = '';
+    categorySelect.value = '';
+
+    searchResults.innerHTML =
+        '<p>Use the search options above to find events.</p>';
+});
+
+
+// Display search results
 function displayResults(events) {
+
     searchResults.innerHTML = '';
 
     if (events.length === 0) {
@@ -69,6 +86,7 @@ function displayResults(events) {
     }
 
     events.forEach(event => {
+
         const card = document.createElement('div');
         card.className = 'event-card';
 
