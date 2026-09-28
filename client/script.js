@@ -1,7 +1,13 @@
 const API_URL = 'http://localhost:3000/api/events';
 
 fetch(API_URL)
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to load events');
+        }
+
+        return response.json();
+    })
     .then(events => {
         const eventList = document.getElementById('event-list');
 
