@@ -88,21 +88,71 @@ if (!eventId) {
                         ${event.phone}
                     </p>
 
-                    <button id="register-button">
-                        Register for Event
-                    </button>
+                    <h3>Register for Event</h3>
+
+                    <form id="registration-form">
+
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input
+                                type="text"
+                                id="first-name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input
+                                type="text"
+                                id="last-name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                required
+                            >
+                        </div>
+
+                        <button
+                            type="submit"
+                            id="register-button">
+                            Register for Event
+                        </button>
+
+                    </form>
 
                 </div>
             `;
 
             document
-                .getElementById('register-button')
-                .addEventListener('click', () => {
-                    alert('This feature is currently under construction.');
+                .getElementById('registration-form')
+                .addEventListener('submit', event => {
+                    event.preventDefault();
+
+                    alert(
+                        'This feature is currently under construction.'
+                    );
                 });
         })
         .catch(error => {
             console.error('Error loading event:', error);
-            eventDetails.innerHTML = '<p>Unable to load event details.</p>';
+
+            eventDetails.innerHTML =
+                '<p>Unable to load event details.</p>';
         });
 }
